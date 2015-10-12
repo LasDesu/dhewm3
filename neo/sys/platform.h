@@ -140,6 +140,11 @@ If you have questions concerning this license or the applicable additional terms
 #define id_attribute(x)
 #endif
 
+#if defined(__QNXNTO__)
+    // resolve header conflict
+    #include_next <sys/platform.h>
+    #include <alloca.h>
+#endif
 #if !defined(_MSC_VER)
 	// MSVC does not provide this C99 header
 	#include <inttypes.h>
@@ -154,8 +159,10 @@ If you have questions concerning this license or the applicable additional terms
 #include <assert.h>
 #include <time.h>
 #include <ctype.h>
+#ifdef __cplusplus
 #include <cstddef>
 #include <typeinfo>
+#endif
 #include <errno.h>
 #include <math.h>
 

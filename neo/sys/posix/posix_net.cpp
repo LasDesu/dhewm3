@@ -25,6 +25,8 @@ If you have questions concerning this license or the applicable additional terms
 
 ===========================================================================
 */
+#include "sys/platform.h"
+
 #include <signal.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -42,7 +44,6 @@ If you have questions concerning this license or the applicable additional terms
 #include <net/if.h>
 #include <ifaddrs.h>
 
-#include "sys/platform.h"
 #include "framework/Common.h"
 #include "framework/CVarSystem.h"
 #include "sys/sys_public.h"
@@ -643,7 +644,7 @@ int idTCP::Read(void *data, int size) {
 		return -1;
 	}
 
-#if defined(_GNU_SOURCE)
+#if defined(_GNU_SOURCE) && !defined(__QNXNTO__)
 	// handle EINTR interrupted system call with TEMP_FAILURE_RETRY -  this is probably GNU libc specific
 	if ( ( nbytes = TEMP_FAILURE_RETRY( read( fd, data, size ) ) ) == -1 ) {
 #else
@@ -700,7 +701,7 @@ int	idTCP::Write(void *data, int size) {
 		return -1;
 	}
 
-#if defined(_GNU_SOURCE)
+#if defined(_GNU_SOURCE) && !defined(__QNXNTO__)
 	// handle EINTR interrupted system call with TEMP_FAILURE_RETRY -  this is probably GNU libc specific
 	if ( ( nbytes = TEMP_FAILURE_RETRY ( write( fd, data, size ) ) ) == -1 ) {
 #else

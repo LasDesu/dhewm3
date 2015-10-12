@@ -26,10 +26,10 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 
+#include "sys/platform.h"
+
 #include <math.h>
 #include <float.h>
-
-#include "sys/platform.h"
 
 #include "idlib/math/Simd_AltiVec.h"
 

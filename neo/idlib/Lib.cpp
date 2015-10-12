@@ -26,6 +26,8 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 
+#include "sys/platform.h"
+
 #if defined( MACOS_X )
 #include <signal.h>
 #include <sys/types.h>
@@ -37,7 +39,6 @@ If you have questions concerning this license or the applicable additional terms
 
 #include <SDL_endian.h>
 
-#include "sys/platform.h"
 #include "idlib/math/Vector.h"
 #include "idlib/math/Polynomial.h"
 #include "idlib/Str.h"
@@ -514,7 +515,7 @@ void AssertFailed( const char *file, int line, const char *expression ) {
 	idLib::sys->DebugPrintf( "\n\nASSERTION FAILED!\n%s(%d): '%s'\n", file, line, expression );
 #ifdef _MSC_VER
 	__debugbreak();
-#elif defined( __GNUC__ )
+#elif defined( __GNUC__ ) && !defined(__LCC__)
 	__builtin_trap();
 #endif
 	_exit(1);

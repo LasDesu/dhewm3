@@ -26,6 +26,8 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 
+#include "sys/platform.h"
+
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <errno.h>
@@ -39,7 +41,6 @@ If you have questions concerning this license or the applicable additional terms
 #include <signal.h>
 #include <fcntl.h>
 
-#include "sys/platform.h"
 #include "idlib/containers/StrList.h"
 #include "framework/FileSystem.h"
 #include "framework/KeyInput.h"

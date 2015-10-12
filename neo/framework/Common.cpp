@@ -1317,7 +1317,7 @@ static void Com_Crash_f( const idCmdArgs &args ) {
 		return;
 	}
 
-#ifdef __GNUC__
+#if defined(__GNUC__) && !defined(__LCC__)
 	__builtin_trap();
 #else
 	* ( int * ) 0 = 0x12345678;

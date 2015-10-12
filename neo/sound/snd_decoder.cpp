@@ -26,11 +26,12 @@ If you have questions concerning this license or the applicable additional terms
 ===========================================================================
 */
 
+#include "sys/platform.h"
+
 #define OV_EXCLUDE_STATIC_CALLBACKS
 #include <vorbis/codec.h>
 #include <vorbis/vorbisfile.h>
 
-#include "sys/platform.h"
 #include "framework/FileSystem.h"
 
 #include "sound/snd_local.h"
